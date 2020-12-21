@@ -35,13 +35,18 @@ class Category:
         else:
             return True
 
+    def total_withdraws(self):
+        withdraws = rount(sum([x["amount"]
+                               for x in self.ledger if x["amount"] < 0]), 2)
+        return withdraws
+
     def __str__(self):
         head_middle = (30 - len(self.category)) // 2
         head = '*' * head_middle + self.category + '*' * head_middle
         print(head)
         total_amount = sum([list(x.values())[0] for x in self.ledger])
         for el in self.ledger:
-            description = el["description"][:26]
+            description = el["description"][:24]
             amount = '%.2f' % el["amount"]
             fill = len(head) - len(description) - len(amount)
             body = description + (' ' * fill) + amount
@@ -50,9 +55,6 @@ class Category:
 
 
 def create_spend_chart(categories):
-    total_withdraws = 0
-    ledgers = [x.ledger for x in categories]
-    for i in ledgers:
-        for j in i:
-            if j["amount"] < 0:
-                total_withdraws += j["amount"]
+    percent = {}
+    for el in categories:
+        percent[el.category] = el.total_withdraws()
