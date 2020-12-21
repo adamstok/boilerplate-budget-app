@@ -36,7 +36,7 @@ class Category:
             return True
 
     def total_withdraws(self):
-        withdraws = rount(sum([x["amount"]
+        withdraws = round(sum([x["amount"]
                                for x in self.ledger if x["amount"] < 0]), 2)
         return withdraws
 
@@ -60,9 +60,10 @@ def create_spend_chart(categories):
     for el in categories:
         total_withdraws += el.total_withdraws()
     for el in categories:
-        p1 = total_withdraws / categories[el]
+        p1 = total_withdraws / el.total_withdraws()
         p2 = 100 // p1
         percent[el] = p2
+    sl(percent)
 
 
 def sl(x):
