@@ -36,7 +36,17 @@ class Category:
             return True
 
     def __str__(self):
-        print('*' * 30)
+        head_middle = (30 - len(self.category)) // 2
+        head = '*' * head_middle + self.category + '*' * head_middle
+        print(head)
+        total_amount = sum([list(x.values())[0] for x in self.ledger])
+        for el in self.ledger:
+            description = el["description"][:27]
+            amount = '%.2f' % el["amount"]
+            fill = len(head) - len(description) - len(amount)
+            body = description + (' ' * fill) + amount
+            print(body)
+        print(f"Total: {total_amount}")
 
 
 def create_spend_chart(categories):
