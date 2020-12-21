@@ -50,4 +50,9 @@ class Category:
 
 
 def create_spend_chart(categories):
-    pass
+    total_withdraws = 0
+    ledgers = [x.ledger for x in categories]
+    for i in ledgers:
+        for j in i:
+            if j["amount"] < 0:
+                total_withdraws += j["amount"]
