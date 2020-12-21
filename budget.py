@@ -43,15 +43,18 @@ class Category:
     def __str__(self):
         head_middle = (30 - len(self.category)) // 2
         head = '*' * head_middle + self.category + '*' * head_middle
-        print(head)
         total_amount = sum([list(x.values())[0] for x in self.ledger])
+        outp = [head]
         for el in self.ledger:
             description = el["description"][:23]
             amount = '%.2f' % el["amount"]
             fill = len(head) - len(description) - len(amount)
             body = description + (' ' * fill) + amount
-            print(body)
-        print(f"Total: {total_amount}")
+            # print(body)
+            outp.append(body)
+        # print(f"Total: {total_amount}")
+        outp.append(f"Total: {total_amount}")
+        return '\n'.join(outp)
 
 
 def create_spend_chart(categories):
