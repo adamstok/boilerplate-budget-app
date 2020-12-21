@@ -55,6 +55,11 @@ class Category:
 
 
 def create_spend_chart(categories):
+    total_withdraws = 0
     percent = {}
     for el in categories:
-        percent[el.category] = el.total_withdraws()
+        total_withdraws += el.total_withdraws()
+    for el in categories:
+        p1 = total_withdraws / categories[el]
+        p2 = 100 // p1
+        percent[el] = p2
