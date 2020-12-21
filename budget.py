@@ -7,8 +7,7 @@ class Category:
         self.ledger.append({"amount": amount, "description": description})
 
     def withdraw(self, amount, description=""):
-        total_amount = sum([list(x.values())[0] for x in self.ledger])
-        if total_amount - amount < 0:
+        if self.check_founds(amount) == False:
             return False
         else:
             self.ledger.append({"amount": -amount, "description": description})
@@ -20,8 +19,7 @@ class Category:
 
     def transfer(self, amount, category_obj):
         ledger = category_obj.ledger
-        total_amount = sum([list(x.values())[0] for x in self.ledger])
-        if total_amount - amount < 0:
+        if self.check_founds(amount) == False:
             return False
         else:
             transfer_to = f"Transfer to {category_obj.category}"
