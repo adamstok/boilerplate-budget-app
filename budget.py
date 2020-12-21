@@ -93,6 +93,7 @@ def sl(x):
             else:
                 st += ' ' + ' '
             if j == xx[-1]:
+                st = st.rjust(total_len, ' ')
                 output_list.append(st)
                 st = ''
     print('\n'.join(output_list))
