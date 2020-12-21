@@ -41,7 +41,7 @@ class Category:
         print(head)
         total_amount = sum([list(x.values())[0] for x in self.ledger])
         for el in self.ledger:
-            description = el["description"][:27]
+            description = el["description"][:26]
             amount = '%.2f' % el["amount"]
             fill = len(head) - len(description) - len(amount)
             body = description + (' ' * fill) + amount
