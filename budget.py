@@ -104,5 +104,5 @@ def sl(x):
                 st = st.rjust(total_len, ' ')
                 output_list.append(st)
                 st = ''
-    print('\n'.join(output_list))
+    # print('\n'.join(output_list))
     return '\n'.join(output_list)
