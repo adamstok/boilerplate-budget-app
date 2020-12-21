@@ -63,7 +63,9 @@ def create_spend_chart(categories):
         p1 = total_withdraws / el.total_withdraws()
         p2 = 100 // p1
         percent[el.category] = p2
-    sl(percent)
+    print(percent)
+    outp = sl(percent)
+    return outp
 
 
 def sl(x):
@@ -78,7 +80,9 @@ def sl(x):
         s = f'{i * 10}'.rjust(3, ' ')+'| '
         for p in x.values():
             if p >= i * 10:
-                s += 'o '
+                s += 'o  '
+            else:
+                s += '   '
         if len(s) <= 5:
             s = s.ljust(total_len)
         output_list.append(s)
@@ -90,11 +94,12 @@ def sl(x):
     for i in range(max_deep):
         for j in xx:
             if i <= len(j) - 1:
-                st += j[i] + ' '
+                st += j[i] + '  '
             else:
-                st += ' ' + ' '
+                st += ' ' + '  '
             if j == xx[-1]:
                 st = st.rjust(total_len, ' ')
                 output_list.append(st)
                 st = ''
     print('\n'.join(output_list))
+    return '\n'.join(output_list)
