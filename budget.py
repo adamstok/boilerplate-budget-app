@@ -69,7 +69,7 @@ def create_spend_chart(categories):
 
 
 def sl(x):
-    total_len = 5 + (len(x) * 2)
+    total_len = 5 + (len(x) * 3)
     output_list = ['Percentage spent by category']
     max_deep = 0
     xx = []
