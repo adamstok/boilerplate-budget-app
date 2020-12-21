@@ -63,3 +63,14 @@ def create_spend_chart(categories):
         p1 = total_withdraws / categories[el]
         p2 = 100 // p1
         percent[el] = p2
+
+
+"""
+def sl(s):
+    for i in range(10, -1, -1):
+        s = f'{i * 10}'.rjust(3,' ')+'|'
+        for p in s.values():
+            if p >= i * 10:
+                s += ' o '
+        print(s)
+"""
