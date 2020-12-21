@@ -30,6 +30,13 @@ class Category:
             ledger.append({"amount": amount, "description": transfer_from})
             return True
 
+    def check_founds(self, amount):
+        total_amount = sum([list(x.values())[0] for x in self.ledger])
+        if amount > total_amount:
+            return False
+        else:
+            return True
+
 
 def create_spend_chart(categories):
     pass
