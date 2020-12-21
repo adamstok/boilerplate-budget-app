@@ -7,7 +7,7 @@ class Category:
         self.ledger.append({"amount": amount, "description": description})
 
     def withdraw(self, amount, description=""):
-        if self.check_founds(amount) == False:
+        if self.check_funds(amount) == False:
             return False
         else:
             self.ledger.append({"amount": -amount, "description": description})
@@ -19,7 +19,7 @@ class Category:
 
     def transfer(self, amount, category_obj):
         ledger = category_obj.ledger
-        if self.check_founds(amount) == False:
+        if self.check_funds(amount) == False:
             return False
         else:
             transfer_to = f"Transfer to {category_obj.category}"
@@ -28,7 +28,7 @@ class Category:
             ledger.append({"amount": amount, "description": transfer_from})
             return True
 
-    def check_founds(self, amount):
+    def check_funds(self, amount):
         total_amount = sum([list(x.values())[0] for x in self.ledger])
         if amount > total_amount:
             return False
@@ -46,7 +46,7 @@ class Category:
         print(head)
         total_amount = sum([list(x.values())[0] for x in self.ledger])
         for el in self.ledger:
-            description = el["description"][:24]
+            description = el["description"][:23]
             amount = '%.2f' % el["amount"]
             fill = len(head) - len(description) - len(amount)
             body = description + (' ' * fill) + amount
@@ -62,13 +62,13 @@ def create_spend_chart(categories):
     for el in categories:
         p1 = total_withdraws / el.total_withdraws()
         p2 = 100 // p1
-        percent[el] = p2
+        percent[el.category] = p2
     sl(percent)
 
 
 def sl(x):
     total_len = 5 + (len(x) * 2)
-    output_list = []
+    output_list = ['Percentage spent by category']
     max_deep = 0
     xx = []
     for i in x:
