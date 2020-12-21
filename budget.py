@@ -14,6 +14,10 @@ class Category:
             self.ledger.append({"amount": -amount, "description": description})
             return True
 
+    def get_balance(self):
+        total_amount = sum([list(x.values())[0] for x in self.ledger])
+        return total_amount
+
 
 def create_spend_chart(categories):
     pass
