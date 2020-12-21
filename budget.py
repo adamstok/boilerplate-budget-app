@@ -65,12 +65,18 @@ def create_spend_chart(categories):
         percent[el] = p2
 
 
-"""
-def sl(s):
+def sl(x):
+    total_len = 5 + (len(x) * 2)
+    output_list = []
     for i in range(10, -1, -1):
-        s = f'{i * 10}'.rjust(3,' ')+'|'
-        for p in s.values():
+        s = f'{i * 10}'.rjust(3, ' ')+'| '
+        for p in x.values():
             if p >= i * 10:
-                s += ' o '
-        print(s)
-"""
+                s += 'o '
+        if len(s) <= 5:
+            s = s.ljust(total_len)
+        output_list.append(s)
+    bottom = '-' * (len(s) - 4)
+    bottom = bottom.rjust(total_len, ' ')
+    output_list.append(bottom)
+    print('\n'.join(output_list))
