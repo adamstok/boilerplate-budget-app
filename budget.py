@@ -35,6 +35,9 @@ class Category:
         else:
             return True
 
+    def __str__(self):
+        print('*' * 30)
+
 
 def create_spend_chart(categories):
     pass
